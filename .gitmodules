@@ -1,0 +1,9 @@
+[submodule "CodeMirror"]
+	path = CodeMirror
+	url = https://github.com/codemirror/CodeMirror.git
+[submodule "Font-Awesome"]
+	path = Font-Awesome
+	url = https://github.com/FortAwesome/Font-Awesome.git
+[submodule "require-css"]
+	path = require-css
+	url = https://github.com/guybedford/require-css.git
