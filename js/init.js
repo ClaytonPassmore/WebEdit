@@ -7,6 +7,8 @@ require.config({
 
 define(["jquery",
 		"../CodeMirror/lib/codemirror",
+		"../require-css/css!../css/style",
+		"../require-css/css!../CodeMirror/theme/3024-night",
 		"../require-css/css!../CodeMirror/lib/codemirror",
 		"../require-css/css!../Font-Awesome/css/font-awesome.min"],
 function($, CodeMirror) {
@@ -18,28 +20,23 @@ function($, CodeMirror) {
 
 			this.$el.css("width", "100%")
 					.css("height", "100%");
-			this.$menu_div = $("<div />").css("width", "100%")
-										 .css("height", "70px")
+			this.$menu_div = $("<div />").attr("class", "toolbar")
 										 .appendTo(this.$el);
 			var that = this;
 			this.$file_opener = $("<input />").attr("type", "file");
 			$(this.$file_opener).on("change", function(event) { that.read_file(event); });
 			var $open_button = $("<div />").appendTo(this.$menu_div)
-										   .css("border", "1px solid black")
-										   .css("padding", "10px")
-										   .css("float", "left")
-										   .css("margin", "10px")
-										   .css("cursor", "pointer")
+										   .attr("class", "button")
 										   .click(function() {
 				that.$file_opener.click();
 			}).append($("<i />").attr("class", "fa fa-file"));
-			this.$editor_div = $("<div />").css("width", "100%")
-										   .css("height", "100%")
+			this.$editor_div = $("<div />").attr("class", "editor")
 										   .appendTo(this.$el);
 			this.editor = CodeMirror(this.$editor_div[0],
 				{lineWrapping: true,
 				 lineNumbers: true,
-				 autofocus: true});
+				 autofocus: true,
+				 theme: "3024-night"});
 			this.editor.setSize("100%", "100%");
 		},
 		read_file: function(event) {
